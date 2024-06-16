@@ -5,14 +5,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Redirecting...</title>
     <script>
-        window.onload = function() {
+        function genURL() {
             var parkingUrl = "http://park.njatsport.cn/app/qrcode-coupons?qrHash=4deaa805&time=";
             var timestamp = Date.now();
-            window.location.href = parkingUrl + timestamp;
+            return parkingUrl + timestamp;
+        };
+
+        function refresh(){
+            document.getElementById("parkingUrl").textContent = genURL();
+        };
+
+        window.onload = refresh;
+        
+        function goTo() {
+            window.location.href = genURL();
+        };
+
+        function copyToClipboard() {
+            navigator.clipboard.writeText(getURL())
+                .then(function() {
+                    console.log('Text copied to clipboard');
+                })
+                .catch(function(err) {
+                    console.error('Failed to copy text: ', err);
+                });
         };
     </script>
 </head>
 <body>
-    <h1></h1>
+    <div id="parkingUrl" style="margin-top:20px;margin-left:20px;">url</div>
+    <div style="margin-top:20px;margin-left:20px;">
+    	<button id="refresh" style="width:100px;height:50px;" onclick="refresh()">刷 新</button>
+    </div>
+    <div style="margin-top:20px;margin-left:20px;">
+    	<button id="copy" style="width:100px;height:50px;" onclick="copyToClipboard()">复 制</button>
+    </div>
+    <div style="margin-top:20px;margin-left:20px;">
+    	<button id="goto" style="width:100px;height:50px;" onclick="goTo()">访 问</button>
+    </div>
 </body>
 </html>
