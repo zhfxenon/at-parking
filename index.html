@@ -22,7 +22,7 @@
         };
 
         function copyToClipboard() {
-            navigator.clipboard.writeText(getURL())
+            navigator.clipboard.writeText(genURL())
                 .then(function() {
                     console.log('Text copied to clipboard');
                 })
