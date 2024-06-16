@@ -6,14 +6,15 @@
     <title>Your Name's Page</title>
     <script>
         window.onload = function() {
+            var parkingUrl = "http://park.njatsport.cn/app/qrcode-coupons?qrHash=4deaa805&time=";
             var timestamp = Date.now();
-            document.getElementById('timestamp').textContent = timestamp;
+            document.getElementById('newURL').textContent = parkingUrl + timestamp;
         };
     </script>
 </head>
 <body>
     <h1>Welcome to Your Page</h1>
     <p>This is your personal webpage powered by GitHub Pages.</p>
-    <div id="timestamp"></div>
+    <div id="newURL"></div>
 </body>
 </html>
